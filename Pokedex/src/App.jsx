@@ -5,13 +5,12 @@ import PokemonDetails from './components/PokemonDetails/PokemonDetails'
 
 function App() {
   return (
-    <>
       <Routes>
-        <Route to="/" element={<Pokedex />}/>
-        <Route to="/pokemon/:id" element={<PokemonDetails />}/>  
-
-      </Routes>  
-    </>
+        <Route path="/" element={<Pokedex />} />
+        <Route path="/pokemon/:id" element={<PokemonDetails />} />  
+        <Route path="*" element={<h1>Page Not Found</h1>} />  
+      
+        </Routes>  
   )
 }
 
