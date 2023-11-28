@@ -4,9 +4,9 @@ import Pokemon from '../Pokemon/Pokemon';
 
 import { Link }  from 'react-router-dom';
 
-function PokemonDetails(){
+function PokemonDetails({pokemonName}){
   
-    const [pokemon, pokemonListState] = usePokemon();
+    const [pokemon, pokemonListState] = usePokemon(pokemonName);
     
     return(
         <>

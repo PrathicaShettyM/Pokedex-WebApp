@@ -3,7 +3,7 @@ import {useParams}  from 'react-router-dom';
 import axios from 'axios';
 import downloadPokemons from '../utils/downloadPokemons';
 
-function usePokemon(){
+function usePokemon(pokemonName){
     const { id } = useParams();
     const POKEMON_DETAIL_URL = "https://pokeapi.co/api/v2/pokemon/"
     
@@ -18,7 +18,9 @@ function usePokemon(){
 
 
     async function downloadGivenPokemon(){
-        const response = await axios.get(POKEMON_DETAIL_URL + id);
+        console.log(POKEMON_DETAIL_URL + ((pokemonName) ? pokemonName : id));
+
+        const response = await axios.get(POKEMON_DETAIL_URL + ((pokemonName) ? pokemonName : id));
         const pokemon = response.data;
         
         setPokemon({
@@ -33,16 +35,23 @@ function usePokemon(){
     }
 
     async function downloadPokemonAndRelated(id){
-        const type = await downloadGivenPokemon(id);
-        await downloadPokemons(pokemonListState, setPokemonListState, `https://pokeapi.co/api/v2/type/${type}`);
 
+        try {
+            const type = await downloadGivenPokemon(id);
+            await downloadPokemons(pokemonListState, setPokemonListState, `https://pokeapi.co/api/v2/type/${type}`);    
+        } catch (e) {
+            console.log("pokemon not found");
+        }
+
+
+       
     }
 
 
     useEffect(()=>{
         downloadPokemonAndRelated(id)
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
-    },[id])
+    },[id, pokemonName])
 
     return [pokemon, pokemonListState]
 }
