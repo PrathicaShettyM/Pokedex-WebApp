@@ -1,2 +1,2 @@
 # Pokedex-ReactJS
-This helped
+This helped me
