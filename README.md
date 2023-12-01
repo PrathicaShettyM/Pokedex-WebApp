@@ -1,3 +1,3 @@
 # Pokedex-ReactJS
 This
-i have learnt
+I have learnt
