@@ -1,3 +1,3 @@
 # Pokedex-ReactJS
 This
-I have learnt many things while creating this website.Some among them were
+I have learnt many things while creating this website.Some 
