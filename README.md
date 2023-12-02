@@ -1,3 +1,3 @@
 # Pokedex-ReactJS
-This hi
+This 
 I have learnt many things while creating this website.Some 
